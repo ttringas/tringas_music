@@ -1,0 +1,2 @@
+/* Sortable Shopify Theme v1.0 (jQuery 1.3.1 required). Copyright (c) Pixellent, LLC <http://www.pixellent.com>. */
+$.cleared=function(A){if($(A).length){$(A).each(function(){var B=$(this).val();$(this).focus(function(){if($(this).val()==B){$(this).val("")}});$(this).blur(function(){if($(this).val()==""){$(this).val(B)}})})}};$(document).ready(function(){$.cleared("input.field")});
