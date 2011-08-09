@@ -98,9 +98,14 @@ div#main {
 	float: left;
 }
 
-div#sidebar {
+div#sidebar-right {
 	width: 170px;
 	float: right;
+}
+
+div#sidebar-left {
+	width: 170px;
+	float: left;
 }
 
 .clear {
@@ -133,7 +138,7 @@ a:hover {
 /* @group Header */
 
 div#header {
-	background: #ededed url(header-default.png) repeat-x center bottom;
+	background: #ededed
 	min-width: 960px;
 }
 

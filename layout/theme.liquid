@@ -106,6 +106,22 @@
 				</div>
 				{% endif %}
 				<!-- END SORTABLE -->
+				 {% if template == "page.Instore" %}
+				<!-- START Left Sidebar -->
+					<div id="sidebar-left">
+						<div id="sidebar">
+						<!-- START Links -->
+							<div class ="bg">
+								<h3>Check out products we carry in the store!</h3>
+								<ul class="clear">{% for link in linklists.in-store-products.links %}
+									<li><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+						<!-- END Links -->
+					{% endif %}
+				<!-- END Left Sidbar -->
 				<!-- START COLS -->
 				<div id="cols">
 					<!-- START MAIN -->
@@ -114,18 +130,7 @@
 					</div>
 					<!-- END MAIN -->
                     <!-- START SIDEBAR -->
-                    {% if template == "page.Instore" %}
-					<div id="sidebar">
-						<!-- START Links -->
-							<div class ="bg">
-								<h3>Check out products we carry in the store!</h3>
-								<ul class="clear">{% for link in linklists.in-store-products.links %}
-									<li><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
-								</ul>
-							</div>
-					</div>
-                    {% endif %}
-						<!-- END Links -->
+                   
 					<!-- END Sidebar -->
 				</div>
 				<!-- END COLS -->{% endif %}
