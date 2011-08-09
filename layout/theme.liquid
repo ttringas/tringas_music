@@ -65,75 +65,113 @@
 	<!-- START CONTENT -->
 	<div id="{% if template == "404" %}missing{% else %}{{ template }}{% endif %}" class="content">
 		<div class="container">
-			<div id="bg" class="clear">{% if template == "cart" or template == "404" %}
-				{{ content_for_layout }}{% else %}
-				<!-- START SORTABLE -->
+			<div id="bg" class="clear">
+				<!-- START Store filters -->
 				{% if template == "collection" or template == "product" %}
 				<div id="sortable">
 					<!-- START Collections filter -->
 					<div class="filter">
-						<h3>Shop by Category</h3>{% if linklists.category-filter.links.size > 0 %}
-						<ul>{% for link in linklists.category-filter.links %}
-							<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
-						</ul>{% else %}
-						<div>
-							<p><a href="/admin">Create a linklist</a> with title <strong>Category Filter</strong> for links to show here.</p>
-						</div>{% endif %}
+						<h3>Shop by Category</h3>
+						{% if linklists.category-filter.links.size > 0 %}
+							<ul>{% for link in linklists.category-filter.links %}
+								<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>
+								{% endfor %}
+							</ul>
+						{% else %}
+							<div>
+								<p><a href="/admin">Create a linklist</a> with title <strong>Category Filter</strong> for links to show here.</p>
+							</div>
+						{% endif %}
 					</div>
 					<!-- END FILTER -->
 					<!-- START FILTER -->
 					<div class="filter">
-						<h3>Shop by Price</h3>{% if linklists.price-filter.links.size > 0 %}
+						<h3>Shop by Price</h3>
+						{% if linklists.price-filter.links.size > 0 %}
 						<ul>{% for link in linklists.price-filter.links %}
-							<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
-						</ul>{% else %}
+							<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>
+							{% endfor %}
+						</ul>
+						{% else %}
 						<div>
 							<p><a href="/admin">Create a linklist</a> with title <strong>Price Filter</strong> for links to show here.</p>
-						</div>{% endif %}
+						</div>
+						{% endif %}
 					</div>
 					<!-- END FILTER -->
 					<!-- START FILTER -->
 					<div class="filter end">
-						<h3>Shop by Brand</h3>{% if linklists.brand-filter.links.size > 0 %}
-						<ul>{% for link in linklists.brand-filter.links %}
-							<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
-						</ul>{% else %}
-						<div>
-							<p><a href="/admin">Create a linklist</a> with title <strong>Brand Filter</strong> for links to show here.</p>
-						</div>{% endif %}
+						<h3>Shop by Brand</h3>
+						{% if linklists.brand-filter.links.size > 0 %}
+							<ul>{% for link in linklists.brand-filter.links %}
+								<li><a href="{{ link.url }}"{% if collection.url == link.url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>
+								{% endfor %}
+							</ul>
+						{% else %}
+							<div>
+								<p><a href="/admin">Create a linklist</a> with title <strong>Brand Filter</strong> for links to show here.</p>
+							</div>
+						{% endif %}
 					</div>
 					<!-- END Collections Filter -->
 				</div>
 				{% endif %}
-				<!-- END SORTABLE -->
-				 {% if template == "page.Instore" %}
-				<!-- START Left Sidebar -->
+				<!-- END Store filters, everything above handles online store, product, 404 and cart cases, below is web content -->
+				 	{% if template == "page.Instore" %}
+					<!-- START Left Sidebar -->
 					<div id="sidebar-left">
 						<div id="sidebar">
 						<!-- START Links -->
-							<div class ="bg">
-								<h3>Check out products we carry in the store!</h3>
-								<ul class="clear">{% for link in linklists.in-store-products.links %}
-									<li><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>{% endfor %}
+							<div class ="filter">
+								<h3>Check out products we carry in the Pensacola store!</h3>
+								<ul class="clear">
+								{% for link in linklists.in-store-products.links %}
+									<li><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title | escape }}</a></li>
+								{% endfor %}
 								</ul>
 							</div>
+						<!-- END Links -->
 						</div>
 					</div>
-						<!-- END Links -->
+					<!-- END Left Sidebar -->
 					{% endif %}
-				<!-- END Left Sidbar -->
-				<!-- START COLS -->
-				<div id="cols">
-					<!-- START MAIN -->
-					<div id="main">
-						{{ content_for_layout }}
-					</div>
-					<!-- END MAIN -->
-                    <!-- START SIDEBAR -->
-                   
-					<!-- END Sidebar -->
+				<!-- START MAIN -->
+				<div id="main">
+					{{ content_for_layout }}
 				</div>
-				<!-- END COLS -->{% endif %}
+				<!-- END MAIN -->
+				      <!-- START Right SIDEBAR -->
+                   		<div id="sidebar-right">
+							<div id="sidebar">
+								<div id="store-info">	
+									<table class="store-info">
+										<tr>
+											<th>Store hours</th>
+										</tr>
+										<tr>
+											<td>Mon-Fri</td><td>10-5</td>
+										</tr>
+										<tr>
+											<td>Sat</td><td>10-6</td>
+										</tr>
+										<tr>
+											<td>(850) 438-8514</td>
+										</tr>
+										<tr>
+											<td>(800) 337-0703</td>
+										</tr>
+									</table>
+								</div>
+								<br />
+									<a href= "http://maps.google.com/maps?q=1502+Creighton+Road,+Pensacola,+FL&hl=en&ll=30.499124,-87.211876&spn=0.057685,0.06815&sll=37.0625,-95.677068&sspn=53.696917,69.785156&z=14">1502 Creighton Rd.</a>
+									{% if template == "page.Instore" %}
+									<div class="store-info-map">
+										<iframe width="170" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1502+Creighton+Road,+Pensacola,+FL&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=53.696917,69.785156&amp;ie=UTF8&amp;hq=&amp;hnear=1502+Creighton+Rd,+Pensacola,+Escambia,+Florida+32504&amp;ll=30.494982,-87.210674&amp;spn=0.014792,0.021458&amp;z=14&amp;output=embed"></iframe>
+									</div>
+									{% endif %}
+							</div>
+						</div>
+					<!-- END Right Sidebar -->
 			</div>
 		</div>
 	</div>

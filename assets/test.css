@@ -106,7 +106,6 @@ div#sidebar-left {
 	width: 200px;
 	float: left;
 	margin-left: -10px;
-	margin-top: 60px;
 }
 
 .clear {
@@ -468,7 +467,12 @@ div#image img {
 }
 
 div#options {
-	padding-bottom: 10px;
+	padding-bottom: 30px;
+}
+
+div#options form {
+	background-color: #ededed;
+	padding: 25px 15px 15px;
 }
 
 div#variants {
@@ -1036,14 +1040,6 @@ div#featured div.title h6 {
 }
 
 /* @end */
-
-/* store hours table */
-
-div#store-info{
-	padding: 10px;
-	width: 180px;
-}
-
 
 /* @group Footer */
 
